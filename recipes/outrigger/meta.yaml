@@ -1,0 +1,88 @@
+package:
+  name: outrigger
+  version: "1.1.0"
+
+source:
+  fn: outrigger-1.1.0.tar.gz
+  url: https://pypi.python.org/packages/df/85/ea04b3dd1fa2d89d1c1db8c4ca74a18b4d6223dc0ffcd8d26c8195109704/outrigger-1.1.0.tar.gz
+  md5: 559f2ae6b4f8a15937041bed0f33406e
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch: python
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - outrigger = outrigger:main
+    #
+    # Would create an entry point called outrigger that calls outrigger.main()
+
+    - outrigger = outrigger.commandline:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytest >=3.0.0
+    - pandas >=0.17.0
+    - coverage
+    - gffutils >=0.8.7.1
+    - pybedtools
+    - biopython
+    - joblib
+    - pysam
+    - graphlite
+
+  run:
+    - python
+    - pytest >=3.0.0
+    - pandas >=0.17.0
+    - coverage
+    - gffutils >=0.8.7.1
+    - pybedtools
+    - biopython
+    - joblib
+    - pysam
+    - graphlite
+
+test:
+  # Python imports
+  imports:
+    - outrigger
+    - outrigger.index
+    - outrigger.io
+    - outrigger.psi
+    - outrigger.validate
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - outrigger --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+    - flake8
+    - pytest
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/yeolab/outrigger
+  license: BSD License
+  summary: 'Outrigger detects *de novo* exons and quantifies their percent spliced-in'
+  license_family: BSD
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
