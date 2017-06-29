@@ -78,7 +78,7 @@ test:
     # - nose
 
 about:
-  home: https://github.com/yeolab/outrigger
+  home: http://yeolab.github.io/outrigger
   license: BSD License
   summary: 'Outrigger detects *de novo* exons and quantifies their percent spliced-in'
   license_family: BSD
